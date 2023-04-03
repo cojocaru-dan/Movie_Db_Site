@@ -1,5 +1,6 @@
 import * as fs from 'node:fs';
 
+
 const movieDB = {
 	professionals: [],
 	movies: [],
@@ -54,6 +55,40 @@ addProfessionals("actors", movieData);
 addProfessionals("directors", movieData);
 
 // console.log(movieDB.professionals);
+
+// Prepare the movies
+
+// Populate the movies key in moviesDB
+for(const movie of movieData.movies){
+  movieDB.movies.push(movie);
+};
+
+const replaceWithId = (movieObj, role) => {
+// Iterate through the roles in the movieDB array
+  for (let i = 0; i < movieObj.movies.length; i++) {
+    let profession = movieObj.movies[i][role];
+    // Iterate through the roles in professionals
+    for (let j = 0; j < profession.length; j++) {
+      // Check if the names are the same
+      for (const element of movieObj.professionals){
+        if (profession[j] === element.name){
+          // Replace the name with the ID in professionals 
+          movieObj.movies[i][role][j] = element.id;
+        }
+      }
+    }
+  }
+};
+
+replaceWithId(movieDB, "writers");
+replaceWithId(movieDB, "actors");
+replaceWithId(movieDB, "directors");
+
+// console.log(movieDB.movies);
+
+
+
+
 //write your code brefore this line
 
 export {movieDB};
