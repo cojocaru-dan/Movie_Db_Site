@@ -37,21 +37,26 @@ const loadEvent = function () {
     let index = 1;
 
     data.movies.forEach(item => {
-    rootElement.insertAdjacentHTML("beforeend", element("h1", item.title, "movie"));
-    document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element ("div", item.year, "year"));
-    document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element ("div", item.runtime, "runtime"));
-    document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element ("div", item.genres, "genres"));
-    document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element ("div", item["release-date"], "release-date"));
-    document.querySelector(`.movie:nth-child(${i})`).insertAdjacentHTML("beforeend", element ("div", item.storyline, "storyline"));
+    rootElement.insertAdjacentHTML("beforeend", element("h1", `${"Title: "} ${item.title}`, "movie"));
+    document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element ("div", `${"Year: "} ${item.year}`, "year"));
+    document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element ("div", `${"Runtime: "} ${item.runtime}`, "runtime"));
+    document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element ("div", `${"Genres: "} ${item.genres }`, "genres"));
+    document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element ("div", `${"Release date: "} ${item["release-date"]}`, "release-date"));
+    document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element ("div", `${"Storyline: "} ${item.storyline}`, "storyline"));
     
+    document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element ("div", `${"Writers: "}`, "writers-title"));
     // Add writers
     for (let i = 0; i < item.writers.length; i++) {
        document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element("div", getData(data.professionals, item.writers[i]), "writers"))
     };
+
+    document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element ("div", `${"Actors: "}`, "actors-title"));
     // Add actors
     for (let i = 0; i < item.actors.length; i++) {
       document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element("div", getData(data.professionals, item.actors[i]), "actors"))
    };
+
+   document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element ("div", `${"Directors: "}`, "directors-title"));
    // Add directors
    for (let i = 0; i < item.directors.length; i++) {
     document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element("div", getData(data.professionals, item.directors[i]), "directors"))
@@ -101,6 +106,10 @@ const loadEvent = function () {
 
     case `writers`:
       listProfessionals(data, `writer`);
+      break;
+
+    case `movies`:
+      addMoviesData();
       break;
 
     default:

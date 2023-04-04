@@ -22,3 +22,16 @@ textarea{resize: none;}
 body{
     font-family: 'Montserrat', sans-serif;
 }
+
+.movie {
+    padding: 25px;
+    font-family: "Papyrus";
+    
+}
+
+div {
+    padding: 3px;
+    font-family: "Georgia", Times, serif;
+
+}
+
