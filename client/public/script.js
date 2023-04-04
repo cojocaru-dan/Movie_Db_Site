@@ -10,60 +10,129 @@ const loadEvent = function () {
   const rootElement = document.getElementById("root");
 
   const element = function (tag, inner, index) {
-    return `<${tag} class = ${index}>${inner}</${tag}>`
+    return `<${tag} class = ${index}>${inner}</${tag}>`;
   };
 
   // const headers = (tag, inner) => {
   //     rootElement.insertAdjacentHTML("beforeend", element (tag, inner));
   // }
   // let h1 = headers("h1", "title");
-  
 
   // data.movies.forEach((element) => rootElement.insertAdjacentHTML("beforeend", element("div", element.title)));
 
   let getData = (arr, id) => {
-    for(let name of arr){
-      if (name.id === id){
+    for (let name of arr) {
+      if (name.id === id) {
         return name.name;
       }
     }
   };
 
-
-
-
- const addMoviesData = function() {
-    
+  const addMoviesData = function () {
     let index = 1;
 
-    data.movies.forEach(item => {
-    rootElement.insertAdjacentHTML("beforeend", element("h1", `${"Title: "} ${item.title}`, "movie"));
-    document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element ("div", `${"Year: "} ${item.year}`, "year"));
-    document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element ("div", `${"Runtime: "} ${item.runtime}`, "runtime"));
-    document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element ("div", `${"Genres: "} ${item.genres }`, "genres"));
-    document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element ("div", `${"Release date: "} ${item["release-date"]}`, "release-date"));
-    document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element ("div", `${"Storyline: "} ${item.storyline}`, "storyline"));
-    
-    document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element ("div", `${"Writers: "}`, "writers-title"));
-    // Add writers
-    for (let i = 0; i < item.writers.length; i++) {
-       document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element("div", getData(data.professionals, item.writers[i]), "writers"))
-    };
+    data.movies.forEach((item) => {
+      rootElement.insertAdjacentHTML(
+        "beforeend",
+        element("h1", `${"Title: "} ${item.title}`, "movie")
+      );
+      document
+        .querySelector(`.movie:nth-child(${index})`)
+        .insertAdjacentHTML(
+          "beforeend",
+          element("div", `${"Year: "} ${item.year}`, "year")
+        );
+      document
+        .querySelector(`.movie:nth-child(${index})`)
+        .insertAdjacentHTML(
+          "beforeend",
+          element("div", `${"Runtime: "} ${item.runtime}`, "runtime")
+        );
+      document
+        .querySelector(`.movie:nth-child(${index})`)
+        .insertAdjacentHTML(
+          "beforeend",
+          element("div", `${"Genres: "} ${item.genres}`, "genres")
+        );
+      document
+        .querySelector(`.movie:nth-child(${index})`)
+        .insertAdjacentHTML(
+          "beforeend",
+          element(
+            "div",
+            `${"Release date: "} ${item["release-date"]}`,
+            "release-date"
+          )
+        );
+      document
+        .querySelector(`.movie:nth-child(${index})`)
+        .insertAdjacentHTML(
+          "beforeend",
+          element("div", `${"Storyline: "} ${item.storyline}`, "storyline")
+        );
 
-    document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element ("div", `${"Actors: "}`, "actors-title"));
-    // Add actors
-    for (let i = 0; i < item.actors.length; i++) {
-      document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element("div", getData(data.professionals, item.actors[i]), "actors"))
-   };
+      document
+        .querySelector(`.movie:nth-child(${index})`)
+        .insertAdjacentHTML(
+          "beforeend",
+          element("div", `${"Writers: "}`, "writers-title")
+        );
+      // Add writers
+      for (let i = 0; i < item.writers.length; i++) {
+        document
+          .querySelector(`.movie:nth-child(${index})`)
+          .insertAdjacentHTML(
+            "beforeend",
+            element(
+              "div",
+              getData(data.professionals, item.writers[i]),
+              "writers"
+            )
+          );
+      }
 
-   document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element ("div", `${"Directors: "}`, "directors-title"));
-   // Add directors
-   for (let i = 0; i < item.directors.length; i++) {
-    document.querySelector(`.movie:nth-child(${index})`).insertAdjacentHTML("beforeend", element("div", getData(data.professionals, item.directors[i]), "directors"))
- };
-    index++;
-  })
-  }
+      document
+        .querySelector(`.movie:nth-child(${index})`)
+        .insertAdjacentHTML(
+          "beforeend",
+          element("div", `${"Actors: "}`, "actors-title")
+        );
+      // Add actors
+      for (let i = 0; i < item.actors.length; i++) {
+        document
+          .querySelector(`.movie:nth-child(${index})`)
+          .insertAdjacentHTML(
+            "beforeend",
+            element(
+              "div",
+              getData(data.professionals, item.actors[i]),
+              "actors"
+            )
+          );
+      }
+
+      document
+        .querySelector(`.movie:nth-child(${index})`)
+        .insertAdjacentHTML(
+          "beforeend",
+          element("div", `${"Directors: "}`, "directors-title")
+        );
+      // Add directors
+      for (let i = 0; i < item.directors.length; i++) {
+        document
+          .querySelector(`.movie:nth-child(${index})`)
+          .insertAdjacentHTML(
+            "beforeend",
+            element(
+              "div",
+              getData(data.professionals, item.directors[i]),
+              "directors"
+            )
+          );
+      }
+      index++;
+    });
+  };
 
   const listProfessionals = (movieDB, role) => {
     rootElement.insertAdjacentHTML(
@@ -81,18 +150,35 @@ const loadEvent = function () {
           );
       }
 
-      movieDB.movies.forEach(movie => {
-        if(movie[`${role}s`].includes(element.id)) {
+      movieDB.movies.forEach((movie) => {
+        if (movie[`${role}s`].includes(element.id)) {
           document
-          .querySelector(`#${role}s`)
-          .insertAdjacentHTML(
-            `beforeend`,
-            `<h4 class = movie>${movie.title}</h4>`
-          );
+            .querySelector(`#${role}s`)
+            .insertAdjacentHTML(
+              `beforeend`,
+              `<h4 class = movie>${movie.title}</h4>`
+            );
         }
       });
-
     });
+  };
+
+  const listMoviesByGenres = () => {
+    let index = 1;
+    for (const genre in data.genres[0]) {
+      document
+        .querySelector(`#root`)
+        .insertAdjacentHTML(`beforeend`, `<h1 class = ${genre}>${genre}</h1>`);
+      for (let i = 0; i < data.genres[0][genre].length; i++) {
+        document
+          .querySelector(`h1:nth-child(${index})`)
+          .insertAdjacentHTML(
+            `beforeend`,
+            `<h3 class = movie>${data.genres[0][genre][i].name}</h3>`
+          );
+      }
+      ++index;
+    }
   };
 
   switch (page) {
@@ -110,6 +196,10 @@ const loadEvent = function () {
 
     case `movies`:
       addMoviesData();
+      break;
+
+    case `genres`:
+      listMoviesByGenres();
       break;
 
     default:
