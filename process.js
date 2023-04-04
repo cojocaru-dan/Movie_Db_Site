@@ -86,7 +86,7 @@ replaceWithId(movieDB, "directors");
 
 // console.log(movieDB.movies);
 
-
+console.log(movieDB.professionals);
 
 
 //write your code brefore this line
