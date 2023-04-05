@@ -170,12 +170,18 @@ const loadEvent = function () {
         .querySelector(`#root`)
         .insertAdjacentHTML(`beforeend`, `<h1 class = ${genre}>${genre}</h1>`);
       for (let i = 0; i < data.genres[0][genre].length; i++) {
-        document
-          .querySelector(`h1:nth-child(${index})`)
-          .insertAdjacentHTML(
+        const movie = data.movies.filter(function(movieObj) {
+          return movieObj.title === data.genres[0][genre][i].name;
+        })[0];
+        const parent = document.querySelector(`h1:nth-child(${index})`);
+        parent.insertAdjacentHTML("beforeend", "<br><br>");
+        for (const key in movie) {
+          parent.insertAdjacentHTML(
             `beforeend`,
-            `<h3 class = movie>${data.genres[0][genre][i].name}</h3>`
+            `<h3 class=movie>${key}: ${movie[key]}</h3>`
           );
+        }
+          
       }
       ++index;
     }
