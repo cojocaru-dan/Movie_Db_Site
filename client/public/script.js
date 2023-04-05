@@ -173,7 +173,7 @@ const loadEvent = function () {
         const movie = data.movies.filter(function(movieObj) {
           return movieObj.title === data.genres[0][genre][i].name;
         })[0];
-        const parent = document.querySelector(`h1:nth-child(${index})`);
+        const parent = document.querySelector(`#root > h1:nth-child(${index})`);
         parent.insertAdjacentHTML("beforeend", "<br><br>");
         for (const key in movie) {
           parent.insertAdjacentHTML(

@@ -20,13 +20,25 @@ textarea{resize: none;}
 [readonly]{pointer-events: none; opacity: .4;}
 
 body{
+    overflow-x: hidden;
+    width: 100%; 
+    height: 100%; 
+    background-image: linear-gradient(to bottom right, rgb(146, 246, 59), rgb(5, 135, 26));
+    font-family: 'Montserrat', sans-serif;
+}
+
+html {
+    overflow-x: hidden;
+    width: 100%; 
+    height: 100%; 
+    background-image: linear-gradient(to bottom right, rgb(146, 246, 59), rgb(5, 135, 26));
     font-family: 'Montserrat', sans-serif;
 }
 
 .movie {
-    padding: 25px;
+    padding: 7px;
     font-family: "Papyrus";
-    
+    font-size: 20px;
 }
 
 div {
@@ -45,18 +57,17 @@ div {
 #navigation {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding-left: 450px;
     overflow: hidden;
     font-size: 50px;
-    padding: 5px;
     text-align: center;
 }
 
 ul > li {
     float: left;
     display: block;
-    color: black
+    color: black;
     text-align: center;
-    padding: 14px 16px;
+    padding: 20px;
     text-decoration: none;
 }
